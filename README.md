@@ -13,6 +13,7 @@ Obs: The frames marked in red will be implemented in a next version.
 
 - Java 17
 - Maven
+- DynamoDB
 
 ## Run project
 
