@@ -1,4 +1,4 @@
-# Airport System 
+# Airport System
 
 The purpose of this repository is to manage an airport flight schedule system.
 

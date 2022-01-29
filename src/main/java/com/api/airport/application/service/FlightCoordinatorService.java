@@ -1,7 +1,7 @@
 package com.api.airport.application.service;
 
 import com.api.airport.domain.dto.FlightDTO;
-import com.api.airport.domain.entity.FlightEntity;
+import com.api.airport.domain.mapper.FlightMapper;
 import com.api.airport.domain.repository.FlightRepository;
 import com.api.airport.infrastructure.exception.AirportException;
 import com.api.airport.infrastructure.exception.ErrorCodeDescription;
@@ -11,22 +11,12 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 public class FlightCoordinatorService extends FlightService {
-    public FlightCoordinatorService(FlightRepository flightRepository) {
-        super(flightRepository);
+    public FlightCoordinatorService(FlightRepository flightRepository, FlightMapper flightMapper) {
+        super(flightRepository, flightMapper);
     }
 
     public void createFlight(FlightDTO flightDTO) {
-        flightRepository.createFlight(convertToFlightEntity(flightDTO));
-    }
-
-    private FlightEntity convertToFlightEntity(FlightDTO flightDTO) {
-        return new FlightEntity(
-                flightDTO.getBoardingGate(),
-                flightDTO.getFlightTakeOffDate(),
-                flightDTO.getFlightLandingDate(),
-                flightDTO.getNumberSeats(),
-                flightDTO.getTakeOffAirport(),
-                flightDTO.getLandingAirport());
+        flightRepository.createFlight(flightMapper.toFlightEntityWithoutId(flightDTO));
     }
 
     public void deleteFlight(String id) {
@@ -42,7 +32,7 @@ public class FlightCoordinatorService extends FlightService {
     public void updateFlight(String id, FlightDTO flightDTO) {
         try {
             var response = flightRepository.findFlightById(id);
-            var toUpdate = convertToFlightEntity(flightDTO);
+            var toUpdate = flightMapper.toFlightEntityWithoutId(flightDTO);
             toUpdate.setId(response.getId());
             flightRepository.updateFlight(toUpdate);
         } catch (Exception e) {
@@ -50,5 +40,4 @@ public class FlightCoordinatorService extends FlightService {
             throw new AirportException(ErrorCodeDescription.BAD_REQUEST_FOR_UPDATE_FLIGHT);
         }
     }
-
 }

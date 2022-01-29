@@ -1,7 +1,7 @@
 package com.api.airport.application.service;
 
 import com.api.airport.domain.dto.UserDTO;
-import com.api.airport.domain.entity.UserEntity;
+import com.api.airport.domain.mapper.UserMapper;
 import com.api.airport.domain.repository.UserRepository;
 import com.api.airport.infrastructure.exception.AirportException;
 import com.api.airport.infrastructure.exception.ErrorCodeDescription;
@@ -12,38 +12,30 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
     private final UserRepository userRepository;
+    private final UserMapper userMapper;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, UserMapper userMapper) {
         this.userRepository = userRepository;
+        this.userMapper = userMapper;
     }
 
     public void createUser(UserDTO userDTO) {
-        userRepository.createUser(convertToUserEntity(userDTO));
-    }
-
-    private UserEntity convertToUserEntity(UserDTO userDTO) {
-        return new UserEntity(userDTO.getName(), userDTO.getUserEmail(), userDTO.getRole(),
-                userDTO.getPassword());
+        userRepository.createUser(userMapper.toUserEntityWithoutId(userDTO));
     }
 
     public UserDTO getUserByUserId(String userId) {
         try {
-            return convertToUserDTO(userRepository.getUserByUserId(userId));
+            return userMapper.toUserDTO(userRepository.getUserByUserId(userId));
         } catch (Exception e) {
             log.error("[UserService] - Error on function getUser. UserId: {}", userId);
             throw new AirportException(ErrorCodeDescription.NOT_FOUND_USER);
         }
     }
 
-    private UserDTO convertToUserDTO(UserEntity userEntity) {
-        return new UserDTO(userEntity.getUserId(), userEntity.getName(), userEntity.getUserEmail(), userEntity.getPassword(),
-                userEntity.getRole());
-    }
-
     public void updateUser(UserDTO userDTO, String userId) {
         try {
             var response = userRepository.getUserByUserId(userId);
-            var toUpdate = convertToUserEntity(userDTO);
+            var toUpdate = userMapper.toUserEntityWithoutId(userDTO);
             toUpdate.setUserId(response.getUserId());
             userRepository.updateUser(toUpdate);
         } catch (Exception e) {
