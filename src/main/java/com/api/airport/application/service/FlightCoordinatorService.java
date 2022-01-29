@@ -21,8 +21,7 @@ public class FlightCoordinatorService extends FlightService {
 
     public void deleteFlight(String id) {
         try {
-            var flightEntity = flightRepository.findFlightById(id);
-            flightRepository.deleteFlight(flightEntity);
+            flightRepository.deleteFlight(flightRepository.findFlightById(id));
         } catch (Exception e) {
             log.error("[FlightCoordinatorService] - Bad request for delete flight to id: {}", id);
             throw new AirportException(ErrorCodeDescription.BAD_REQUEST_FOR_DELETE_FLIGHT);
