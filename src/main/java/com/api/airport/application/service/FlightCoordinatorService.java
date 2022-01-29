@@ -2,7 +2,7 @@ package com.api.airport.application.service;
 
 import com.api.airport.domain.dto.FlightDTO;
 import com.api.airport.domain.entity.FlightEntity;
-import com.api.airport.domain.repository.FlightsRepository;
+import com.api.airport.domain.repository.FlightRepository;
 import com.api.airport.infrastructure.exception.AirportException;
 import com.api.airport.infrastructure.exception.ErrorCodeDescription;
 import lombok.extern.slf4j.Slf4j;
@@ -11,12 +11,12 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 public class FlightCoordinatorService extends FlightService {
-    public FlightCoordinatorService(FlightsRepository flightsRepository) {
-        super(flightsRepository);
+    public FlightCoordinatorService(FlightRepository flightRepository) {
+        super(flightRepository);
     }
 
     public void createFlight(FlightDTO flightDTO) {
-        flightsRepository.createFlight(convertToFlightEntity(flightDTO));
+        flightRepository.createFlight(convertToFlightEntity(flightDTO));
     }
 
     private FlightEntity convertToFlightEntity(FlightDTO flightDTO) {
@@ -31,8 +31,8 @@ public class FlightCoordinatorService extends FlightService {
 
     public void deleteFlight(String id) {
         try {
-            var flightEntity = flightsRepository.findFlightById(id);
-            flightsRepository.deleteFlight(flightEntity);
+            var flightEntity = flightRepository.findFlightById(id);
+            flightRepository.deleteFlight(flightEntity);
         } catch (Exception e) {
             log.error("[FlightCoordinatorService] - Bad request for delete flight to id: {}", id);
             throw new AirportException(ErrorCodeDescription.BAD_REQUEST_FOR_DELETE_FLIGHT);
@@ -41,10 +41,10 @@ public class FlightCoordinatorService extends FlightService {
 
     public void updateFlight(String id, FlightDTO flightDTO) {
         try {
-            var response = flightsRepository.findFlightById(id);
+            var response = flightRepository.findFlightById(id);
             var toUpdate = convertToFlightEntity(flightDTO);
             toUpdate.setId(response.getId());
-            flightsRepository.updateFlight(toUpdate);
+            flightRepository.updateFlight(toUpdate);
         } catch (Exception e) {
             log.error("[FlightCoordinatorService] - Bad request for update flight to id: {}", id);
             throw new AirportException(ErrorCodeDescription.BAD_REQUEST_FOR_UPDATE_FLIGHT);

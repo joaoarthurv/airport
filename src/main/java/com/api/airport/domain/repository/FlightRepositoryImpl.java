@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import java.util.List;
 
 @Configuration
-public class FlightRepositoryImpl implements FlightsRepository{
+public class FlightRepositoryImpl implements FlightRepository {
     private final DynamoDBMapper dynamoDBMapper;
 
     public FlightRepositoryImpl(DynamoDBMapper dynamoDBMapper) {
@@ -18,7 +18,7 @@ public class FlightRepositoryImpl implements FlightsRepository{
     @Override
     public FlightEntity findFlightById(String id) {
         FlightEntity response = dynamoDBMapper.load(FlightEntity.class, id);
-        if (response == null){
+        if (response == null) {
             throw new NullPointerException();
         }
         return response;

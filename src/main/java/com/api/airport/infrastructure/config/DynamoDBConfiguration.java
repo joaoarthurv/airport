@@ -2,7 +2,6 @@ package com.api.airport.infrastructure.config;
 
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
-import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
@@ -15,7 +14,7 @@ public class DynamoDBConfiguration {
     private static final AWSStaticCredentialsProvider awsCredProvider = new AWSStaticCredentialsProvider(new BasicAWSCredentials("<access-key>>", "<secret-key>"));
 
     @Bean
-    public static AmazonDynamoDB amazonDynamoDB(){
+    public static AmazonDynamoDB amazonDynamoDB() {
         return AmazonDynamoDBClientBuilder
                 .standard()
                 .withCredentials(awsCredProvider)
@@ -24,7 +23,7 @@ public class DynamoDBConfiguration {
     }
 
     @Bean
-    public static DynamoDBMapper dynamoDBMapper(){
+    public static DynamoDBMapper dynamoDBMapper() {
         return new DynamoDBMapper(amazonDynamoDB());
     }
 }
