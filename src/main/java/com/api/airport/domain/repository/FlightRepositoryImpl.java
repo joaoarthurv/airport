@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import java.util.List;
 
 @Configuration
-public class FlightRepositoryImpl implements FlightsRepository{
+public class FlightRepositoryImpl implements FlightRepository {
     private final DynamoDBMapper dynamoDBMapper;
 
     public FlightRepositoryImpl(DynamoDBMapper dynamoDBMapper) {

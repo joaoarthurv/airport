@@ -2,7 +2,7 @@ package com.api.airport.application.service;
 
 import com.api.airport.domain.dto.FlightDTO;
 import com.api.airport.domain.entity.FlightEntity;
-import com.api.airport.domain.repository.FlightsRepository;
+import com.api.airport.domain.repository.FlightRepository;
 import com.api.airport.infrastructure.exception.AirportException;
 import com.api.airport.infrastructure.exception.ErrorCodeDescription;
 import lombok.extern.slf4j.Slf4j;
@@ -14,15 +14,15 @@ import java.util.List;
 @Slf4j
 @Service
 public class FlightService {
-    protected final FlightsRepository flightsRepository;
+    protected final FlightRepository flightRepository;
 
-    public FlightService(FlightsRepository flightsRepository) {
-        this.flightsRepository = flightsRepository;
+    public FlightService(FlightRepository flightRepository) {
+        this.flightRepository = flightRepository;
     }
 
     public FlightDTO getFlightById(String id) {
         try {
-            FlightEntity flightEntity = flightsRepository.findFlightById(id);
+            FlightEntity flightEntity = flightRepository.findFlightById(id);
             return createFlightDTO(flightEntity);
         } catch (Exception e) {
             log.error("[FlightService] - Not found flight to id: {}", id);
@@ -32,7 +32,7 @@ public class FlightService {
 
     public List<FlightDTO> getAllFlights() {
         try {
-            List<FlightEntity> flightEntityList = flightsRepository.getAllFlights();
+            List<FlightEntity> flightEntityList = flightRepository.getAllFlights();
             return convertToFlightDTOList(flightEntityList);
         } catch (Exception e) {
             log.error("[FlightService] - Not found flights register");

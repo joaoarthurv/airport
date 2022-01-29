@@ -4,7 +4,7 @@ import com.api.airport.domain.entity.FlightEntity;
 
 import java.util.List;
 
-public interface FlightsRepository {
+public interface FlightRepository {
     FlightEntity findFlightById(String id);
 
     List<FlightEntity> getAllFlights();
