@@ -18,7 +18,7 @@ public class FlightRepositoryImpl implements FlightRepository {
     @Override
     public FlightEntity findFlightById(String id) {
         FlightEntity response = dynamoDBMapper.load(FlightEntity.class, id);
-        if (response == null){
+        if (response == null) {
             throw new NullPointerException();
         }
         return response;

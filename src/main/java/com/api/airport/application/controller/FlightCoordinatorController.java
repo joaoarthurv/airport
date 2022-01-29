@@ -27,7 +27,7 @@ public class FlightCoordinatorController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> updateFlight(@PathVariable String id, @RequestBody FlightDTO flightDTO)  {
+    public ResponseEntity<String> updateFlight(@PathVariable String id, @RequestBody FlightDTO flightDTO) {
         flightCoordinatorService.updateFlight(id, flightDTO);
         return ResponseEntity.ok().body("Updated");
     }

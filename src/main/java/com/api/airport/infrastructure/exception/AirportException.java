@@ -6,7 +6,7 @@ import lombok.Getter;
 public class AirportException extends RuntimeException {
     private ErrorCodeDescription errorCodeDescription;
 
-    public AirportException(ErrorCodeDescription errorCodeDescription){
+    public AirportException(ErrorCodeDescription errorCodeDescription) {
         this.errorCodeDescription = errorCodeDescription;
     }
 }

@@ -21,12 +21,12 @@ public class FlightController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<FlightDTO> getFlightById(@PathVariable String id){
+    public ResponseEntity<FlightDTO> getFlightById(@PathVariable String id) {
         return ResponseEntity.ok().body(flightService.getFlightById(id));
     }
 
     @GetMapping
-    public ResponseEntity<List<FlightDTO>> getAllFlights(){
-       return ResponseEntity.ok().body(flightService.getAllFlights());
+    public ResponseEntity<List<FlightDTO>> getAllFlights() {
+        return ResponseEntity.ok().body(flightService.getAllFlights());
     }
 }
