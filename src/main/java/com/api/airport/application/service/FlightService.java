@@ -25,8 +25,7 @@ public class FlightService {
 
     public FlightDTO getFlightById(String id) {
         try {
-            FlightEntity flightEntity = flightRepository.findFlightById(id);
-            return flightMapper.toFlightDTO(flightEntity);
+            return flightMapper.toFlightDTO(flightRepository.findFlightById(id));
         } catch (Exception e) {
             log.error("[FlightService] - Not found flight to id: {}", id);
             throw new AirportException(ErrorCodeDescription.NOT_FOUND_FLIGHT);
@@ -35,8 +34,7 @@ public class FlightService {
 
     public List<FlightDTO> getAllFlights() {
         try {
-            List<FlightEntity> flightEntityList = flightRepository.getAllFlights();
-            return convertToFlightDTOList(flightEntityList);
+            return convertToFlightDTOList(flightRepository.getAllFlights());
         } catch (Exception e) {
             log.error("[FlightService] - Not found flights register");
             throw new AirportException(ErrorCodeDescription.NOT_FOUND_FLIGHT);
