@@ -2,6 +2,13 @@
 
 The purpose of this repository is to manage an airport flight schedule system.
 
+## Diagram
+
+![image](https://user-images.githubusercontent.com/34632499/151645499-23f86ad7-0c69-41c9-9aea-ea473b8a1e5f.png)
+
+Obs: The frames marked in red will be implemented in a next version.
+
+
 ## Requirements
 
 - Java 17
