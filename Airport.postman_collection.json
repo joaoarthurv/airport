@@ -83,7 +83,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/rest/v1/flight/<flight-id>",
+							"raw": "http://localhost:8080/rest/v1/flight/{{flight-id}}",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -93,7 +93,7 @@
 								"rest",
 								"v1",
 								"flight",
-								"<flight-id>"
+								"{{flight-id}}"
 							]
 						}
 					},
@@ -207,7 +207,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/rest/v1/coordinator/management/flight/<flight-id>",
+							"raw": "http://localhost:8080/rest/v1/coordinator/management/flight/{{flight-id}}",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -219,7 +219,7 @@
 								"coordinator",
 								"management",
 								"flight",
-								"<flight-id>"
+								"{{flight-id}}"
 							]
 						}
 					},
@@ -428,7 +428,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/rest/v1/coordinator/management/flight/<flight-id>",
+							"raw": "http://localhost:8080/rest/v1/coordinator/management/flight/{{flight-id}}",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -440,7 +440,7 @@
 								"coordinator",
 								"management",
 								"flight",
-								"<flight-id>"
+								"{{flight-id}}"
 							]
 						}
 					},
@@ -654,7 +654,7 @@
 					]
 				},
 				{
-					"name": "FindUserByEmail",
+					"name": "FindUserByUserId",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -675,7 +675,7 @@
 					},
 					"response": [
 						{
-							"name": "FindUserByEmail",
+							"name": "FindUserByUserId",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
