@@ -2,7 +2,12 @@
 
 The purpose of this repository is to manage an airport flight schedule system.
 
-## Diagram
+## Diagrams
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/34632499/151712592-25e8b034-a5ed-43c3-862d-c1b1272ed590.png"
+" />
+</p>
 
 ![image](https://user-images.githubusercontent.com/34632499/151712251-e8492d64-310c-4e14-b58b-908d16f341c9.png)
 
