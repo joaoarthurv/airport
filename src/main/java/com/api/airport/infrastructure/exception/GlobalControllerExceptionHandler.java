@@ -22,6 +22,4 @@ public class GlobalControllerExceptionHandler extends ResponseEntityExceptionHan
                 .status(e.getErrorCodeDescription().getStatus())
                 .body(new ErrorResponse(e.getErrorCodeDescription()));
     }
-
-
 }
