@@ -32,8 +32,6 @@ public class FlightServiceTest {
 
     private final FlightMapper flightMapper = Mappers.getMapper(FlightMapper.class);
 
-    private final ArgumentCaptor<FlightEntity> flightEntityArgumentCaptor = ArgumentCaptor.forClass(FlightEntity.class);
-
     @BeforeEach
     void setup() {
         flightService = new FlightService(flightRepository, flightMapper);
