@@ -10,7 +10,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class GlobalControllerExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(value = {AirportException.class})
-    public ResponseEntity<ErrorResponse> globalException(AirportException e) {
+    public ResponseEntity<ErrorResponse> airportException(AirportException e) {
         return ResponseEntity
                 .status(e.getErrorCodeDescription().getStatus())
                 .body(new ErrorResponse(e.getErrorCodeDescription()));
