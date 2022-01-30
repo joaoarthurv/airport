@@ -4,7 +4,7 @@ The purpose of this repository is to manage an airport flight schedule system.
 
 ## Diagram
 
-![image](https://user-images.githubusercontent.com/34632499/151645499-23f86ad7-0c69-41c9-9aea-ea473b8a1e5f.png)
+![image](https://user-images.githubusercontent.com/34632499/151712251-e8492d64-310c-4e14-b58b-908d16f341c9.png)
 
 Obs: The frames marked in red will be implemented in a next version.
 
@@ -32,7 +32,7 @@ Obs: The frames marked in red will be implemented in a next version.
 
 ![image](https://user-images.githubusercontent.com/34632499/151645715-7a501076-e917-40de-8ec0-83d10e0bd385.png)
 
-### Postman (Example): `getFlightList | getAllFlights`
+### Postman (Example): `getAllFlights`
 
 ![image](https://user-images.githubusercontent.com/34632499/151645763-7740efa4-4c56-4c44-9c2f-d3f486e51c1d.png)
 
