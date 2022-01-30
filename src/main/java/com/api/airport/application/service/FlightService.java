@@ -4,8 +4,9 @@ import com.api.airport.domain.dto.FlightDTO;
 import com.api.airport.domain.entity.FlightEntity;
 import com.api.airport.domain.mapper.FlightMapper;
 import com.api.airport.domain.repository.FlightRepository;
-import com.api.airport.infrastructure.exception.AirportException;
 import com.api.airport.infrastructure.exception.ErrorCodeDescription;
+import com.api.airport.infrastructure.exception.exceptions.AirportException;
+import com.api.airport.infrastructure.exception.exceptions.FlightException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -25,19 +26,31 @@ public class FlightService {
 
     public FlightDTO getFlightById(String id) {
         try {
-            return flightMapper.toFlightDTO(flightRepository.findFlightById(id));
-        } catch (Exception e) {
+            var response = flightRepository.findFlightById(id);
+            if (response == null) {
+                throw new FlightException(ErrorCodeDescription.NOT_FOUND_FLIGHT);
+            }
+            return flightMapper.toFlightDTO(response);
+        } catch (FlightException flightException) {
             log.error("[FlightService] - Not found flight to id: {}", id);
-            throw new AirportException(ErrorCodeDescription.NOT_FOUND_FLIGHT);
+            throw flightException;
+        } catch (Exception e) {
+            throw new AirportException(ErrorCodeDescription.UNKNOWN_ERROR);
         }
     }
 
     public List<FlightDTO> getAllFlights() {
         try {
-            return convertToFlightDTOList(flightRepository.getAllFlights());
+            var response = flightRepository.getAllFlights();
+            if (response == null) {
+                throw new FlightException(ErrorCodeDescription.NOT_FOUND_FLIGHTS);
+            }
+            return convertToFlightDTOList(response);
+        } catch (FlightException flightException) {
+            log.error("[FlightService] - Not found flights registers");
+            throw flightException;
         } catch (Exception e) {
-            log.error("[FlightService] - Not found flights register");
-            throw new AirportException(ErrorCodeDescription.NOT_FOUND_FLIGHT);
+            throw new AirportException(ErrorCodeDescription.UNKNOWN_ERROR);
         }
     }
 

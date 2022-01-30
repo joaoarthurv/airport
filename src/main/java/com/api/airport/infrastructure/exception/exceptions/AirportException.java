@@ -1,5 +1,6 @@
-package com.api.airport.infrastructure.exception;
+package com.api.airport.infrastructure.exception.exceptions;
 
+import com.api.airport.infrastructure.exception.ErrorCodeDescription;
 import lombok.Getter;
 
 @Getter
