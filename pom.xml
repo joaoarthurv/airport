@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.api</groupId>
-    <artifactId>airport-system</artifactId>
+    <artifactId>api-airport-system</artifactId>
     <version>1.0.0</version>
     <name>api-airport-system</name>
     <description>The purpose of this repository is to manage an airport flight schedule system.</description>
