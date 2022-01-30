@@ -1,6 +1,7 @@
 package com.api.airport.domain.entity;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,6 +10,7 @@ import java.util.Date;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @DynamoDBTable(tableName = "flight_information")
 public class FlightEntity {
 

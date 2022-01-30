@@ -14,7 +14,8 @@ public enum ErrorCodeDescription {
     BAD_REQUEST_FOR_UPDATE_USER(HttpStatus.BAD_REQUEST.value(), "API_ERROR_005", "Could not update user"),
     BAD_REQUEST_FOR_DELETE_FLIGHT(HttpStatus.BAD_REQUEST.value(), "API_ERROR_006", "Could not delete flight"),
     BAD_REQUEST_FOR_UPDATE_FLIGHT(HttpStatus.BAD_REQUEST.value(), "API_ERROR_007", "Could not update flight"),
-    BAD_REQUEST_FOR_DELETE_USER(HttpStatus.BAD_REQUEST.value(), "API_ERROR_008", "Could not delete user");
+    BAD_REQUEST_FOR_DELETE_USER(HttpStatus.BAD_REQUEST.value(), "API_ERROR_008", "Could not delete user"),
+    NOT_FOUND_FLIGHTS(HttpStatus.NOT_FOUND.value(), "API_ERROR_009", "Could not find flights registers");
 
 
     private final int status;

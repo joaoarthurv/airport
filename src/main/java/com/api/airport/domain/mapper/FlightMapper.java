@@ -28,5 +28,16 @@ public interface FlightMapper {
             @Mapping(target = "takeOffAirport"),
             @Mapping(target = "landingAirport")
     })
+    FlightEntity toFlightEntity(FlightDTO flightDTO);
+
+    @Mappings({
+            @Mapping(target = "id"),
+            @Mapping(target = "boardingGate"),
+            @Mapping(target = "flightTakeOffDate"),
+            @Mapping(target = "flightLandingDate"),
+            @Mapping(target = "numberSeats"),
+            @Mapping(target = "takeOffAirport"),
+            @Mapping(target = "landingAirport")
+    })
     FlightDTO toFlightDTO(FlightEntity entity);
 }

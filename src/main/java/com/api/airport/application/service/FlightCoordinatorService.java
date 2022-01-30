@@ -3,7 +3,7 @@ package com.api.airport.application.service;
 import com.api.airport.domain.dto.FlightDTO;
 import com.api.airport.domain.mapper.FlightMapper;
 import com.api.airport.domain.repository.FlightRepository;
-import com.api.airport.infrastructure.exception.AirportException;
+import com.api.airport.infrastructure.exception.exceptions.AirportException;
 import com.api.airport.infrastructure.exception.ErrorCodeDescription;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -21,7 +21,7 @@ public class FlightCoordinatorService extends FlightService {
 
     public void deleteFlight(String id) {
         try {
-            flightRepository.deleteFlight(flightRepository.findFlightById(id));
+            flightRepository.deleteFlight(flightMapper.toFlightEntity(getFlightById(id)));
         } catch (Exception e) {
             log.error("[FlightCoordinatorService] - Bad request for delete flight to id: {}", id);
             throw new AirportException(ErrorCodeDescription.BAD_REQUEST_FOR_DELETE_FLIGHT);
@@ -30,7 +30,7 @@ public class FlightCoordinatorService extends FlightService {
 
     public void updateFlight(String id, FlightDTO flightDTO) {
         try {
-            var response = flightRepository.findFlightById(id);
+            var response = flightMapper.toFlightEntity(getFlightById(id));
             var toUpdate = flightMapper.toFlightEntityWithoutId(flightDTO);
             toUpdate.setId(response.getId());
             flightRepository.updateFlight(toUpdate);
