@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.api</groupId>
-    <artifactId>airport</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>airport</name>
-    <description>Airport system</description>
+    <artifactId>api-airport-system</artifactId>
+    <version>1.0.0</version>
+    <name>api-airport-system</name>
+    <description>The purpose of this repository is to manage an airport flight schedule system.</description>
     <properties>
         <java.version>17</java.version>
         <aws-java-sdk-dynamodb.version>1.12.149</aws-java-sdk-dynamodb.version>
@@ -94,5 +94,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
