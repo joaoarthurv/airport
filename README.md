@@ -8,7 +8,6 @@ The purpose of this repository is to manage an airport flight schedule system.
 
 Obs: The frames marked in red will be implemented in a next version.
 
-
 ## Requirements
 
 - Java 17
@@ -21,7 +20,7 @@ Obs: The frames marked in red will be implemented in a next version.
 
 2 - Build / Execute application.
 
-3 - Open Postman(or similar tool), and import collection (Airport.postman_collection.csv) 
+3 - Open Postman(or similar tool), and import collection (Airport.postman_collection.csv)
 
 ## Project in execution
 

@@ -3,8 +3,8 @@ package com.api.airport.application.service;
 import com.api.airport.domain.dto.FlightDTO;
 import com.api.airport.domain.mapper.FlightMapper;
 import com.api.airport.domain.repository.FlightRepository;
-import com.api.airport.infrastructure.exception.exceptions.AirportException;
 import com.api.airport.infrastructure.exception.ErrorCodeDescription;
+import com.api.airport.infrastructure.exception.exceptions.AirportException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
