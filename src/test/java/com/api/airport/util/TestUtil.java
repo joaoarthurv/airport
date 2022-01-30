@@ -25,7 +25,7 @@ public class TestUtil {
                 NUMBER_SEATS, takeOffAirport, landingAirport);
     }
 
-    public static List<FlightEntity> getListFlight(FlightEntity flightEntityFirst, FlightEntity flightEntitySecond){
+    public static List<FlightEntity> getListFlight(FlightEntity flightEntityFirst, FlightEntity flightEntitySecond) {
         List<FlightEntity> flightEntityList = new ArrayList<>();
 
         flightEntityList.add(flightEntityFirst);
@@ -33,6 +33,4 @@ public class TestUtil {
 
         return flightEntityList;
     }
-
-
 }
